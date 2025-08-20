@@ -1,0 +1,56 @@
+services:
+  semesta:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    container_name: semesta-app
+    volumes:
+      - .:/var/www
+    depends_on:
+      - mysql
+    networks:
+      - laravel
+    ports:
+      - 8000:8000
+    environment:
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_DATABASE: sevima_db
+      DB_USERNAME: sevima_app
+      DB_PASSWORD: password
+
+  mysql:
+    image: mysql:8.0
+    container_name: semesta-mysql
+    restart: unless-stopped
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: sevima_db
+      MYSQL_USER: sevima_app
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - laravel
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: semesta-phpmyadmin
+    restart: unless-stopped
+    ports:
+      - 8080:80
+    environment:
+      PMA_HOST: mysql
+      MYSQL_ROOT_PASSWORD: password
+    networks:
+      - laravel
+    depends_on:
+      - mysql
+
+networks:
+  laravel:
+
+volumes:
+  mysql_data:
