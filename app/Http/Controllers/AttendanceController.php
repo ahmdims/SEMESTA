@@ -30,9 +30,13 @@ class AttendanceController extends Controller
 
         try {
             $this->attendanceService->recordAttendance($validatedData);
-            return redirect()->route('dashboard')->with('success', 'Attendance recorded successfully!');
+
+            return redirect()->route('attendance.scan')
+                ->with('attendance_success', 'Absensi berhasil dicatat!');
+
         } catch (\Exception $e) {
-            return back()->with('error', $e->getMessage());
+            return redirect()->route('attendance.scan')
+                ->with('attendance_error', $e->getMessage());
         }
     }
 }

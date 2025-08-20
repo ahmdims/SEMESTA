@@ -10,13 +10,16 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 text-center">
                     <h3 class="text-lg font-medium mb-4">
-                        Scan this code for {{ $shift->start_time }} - {{ $shift->end_time }} shift.
+                        Scan this code for shift: {{ $shift->start_time }} - {{ $shift->end_time }}
                     </h3>
-                    <div class="flex justify-center">
+
+                    <div class="flex justify-center p-4 border rounded-lg">
                         {!! $qrCode !!}
                     </div>
+
                     <p class="mt-4 text-sm text-gray-600">
-                        Note: This QR code is unique and will expire in one hour.
+                        <span class="font-bold">Important:</span> This QR code is unique and will expire one hour after
+                        being generated.
                     </p>
                 </div>
             </div>

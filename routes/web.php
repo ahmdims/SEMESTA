@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AttendanceController;
@@ -35,6 +36,8 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth', 'role:guard'])->group(function () {
     Route::get('/attendance/scan', [AttendanceController::class, 'create'])->name('attendance.scan');
     Route::post('/attendance', [AttendanceController::class, 'store'])->name('attendance.store');
+
+    Route::get('/attendance/history', [HistoryController::class, 'index'])->name('attendance.history');
 });
 
 Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {
@@ -43,7 +46,7 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
     Route::resource('locations', LocationController::class);
     Route::resource('shifts', ShiftController::class);
 
-    Route::get('/shifts/{shift}/qrcode', [QRCodeController::class, 'show'])->name('shifts.qrcode');
+    Route::get('/shifts/{shift}/qrcode', [App\Http\Controllers\Admin\QRCodeController::class, 'show'])->name('shifts.qrcode');
 });
 
 require __DIR__ . '/auth.php';

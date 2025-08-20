@@ -15,7 +15,10 @@
 
                     @if(Auth::user()->role == 'guard')
                         <x-nav-link :href="route('attendance.scan')" :active="request()->routeIs('attendance.scan')">
-                            {{ __('Scan Attendance') }}
+                            {{ __('Scan Absensi') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('attendance.history')" :active="request()->routeIs('attendance.history')">
+                            {{ __('Riwayat Saya') }}
                         </x-nav-link>
                     @endif
 
