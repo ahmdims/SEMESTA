@@ -7,7 +7,7 @@ HadirKu adalah platform manajemen kehadiran modern yang dirancang untuk memudahk
 ## Presentation
 
 For a visual overview and more details about the QR Code Attendance System App, please refer to our presentation:
-[QR Code Attendance System App Presentation](https://www.figma.com/proto/GiQaXhGDYSyPdAVFQh2223/HadirKu-Website?node-id=3-9&p=f&t=wjyftomyjaYIbHE9-1&scaling=contain&content-scaling=fixed&page-id=3%3A4)
+[QR Code Attendance System App Presentation](https://www.figma.com/proto/GiQaXhGDYSyPdAVFQh2223/HadirKu-Website?node-id=7-285&p=f&t=0tQJcITOc653Pvfx-1&scaling=contain&content-scaling=fixed&page-id=3%3A4)
 
 ## Installation
 
