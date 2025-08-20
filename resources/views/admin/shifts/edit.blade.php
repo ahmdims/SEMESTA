@@ -15,7 +15,7 @@
                             <div class="card card-flush py-4">
                                 <div class="card-header">
                                     <div class="card-title">
-                                        <h2>Update: {{ $shift->title }}</h2>
+                                        <h2>Update: {{ $shift->name }}</h2>
                                     </div>
                                 </div>
                                 <div class="card-body pt-0">
