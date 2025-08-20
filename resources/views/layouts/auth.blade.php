@@ -50,9 +50,9 @@
 
                     <h1 class="text-gray-800 fs-2qx fw-bold text-center mb-7">HadirKu</h1>
 
-                    <di class="text-gray-600 fs-base text-center fw-semibold">
-                        Your one vote is very valuable
-                    </di>
+                    <div class="text-gray-600 fs-base text-center fw-semibold">
+                        Attendance made easy, fast, and trackable in real-time
+                    </div>
                 </div>
             </div>
 

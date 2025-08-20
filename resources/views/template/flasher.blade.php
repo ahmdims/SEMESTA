@@ -4,16 +4,13 @@
             Swal.fire({
                 text: "{{ session('success') }}",
                 icon: "success",
-                buttonsStyling: !1,
-                confirmButtonText: "Oke, mengerti!",
-                customClass: {
-                    confirmButton: "btn btn-primary",
-                },
-                timer: 2000,
-                timerProgressBar: true,
+                buttonsStyling: false,
+                confirmButtonText: "OK, got it!",
                 customClass: {
                     confirmButton: "btn fw-bold btn-primary"
-                }
+                },
+                timer: 2000,
+                timerProgressBar: true
             });
         });
     </script>
@@ -23,16 +20,13 @@
             Swal.fire({
                 text: "{{ session('warning') }}",
                 icon: "warning",
-                buttonsStyling: !1,
-                confirmButtonText: "Oke, mengerti!",
-                customClass: {
-                    confirmButton: "btn btn-primary",
-                },
-                timer: 2000,
-                timerProgressBar: true,
+                buttonsStyling: false,
+                confirmButtonText: "OK, got it!",
                 customClass: {
                     confirmButton: "btn fw-bold btn-primary"
-                }
+                },
+                timer: 2000,
+                timerProgressBar: true
             });
         });
     </script>
@@ -42,16 +36,13 @@
             Swal.fire({
                 text: "{{ session('error') }}",
                 icon: "error",
-                buttonsStyling: !1,
-                confirmButtonText: "Oke, mengerti!",
-                customClass: {
-                    confirmButton: "btn btn-primary",
-                },
-                timer: 2000,
-                timerProgressBar: true,
+                buttonsStyling: false,
+                confirmButtonText: "OK, got it!",
                 customClass: {
                     confirmButton: "btn fw-bold btn-primary"
-                }
+                },
+                timer: 2000,
+                timerProgressBar: true
             });
         });
     </script>
@@ -61,16 +52,13 @@
             Swal.fire({
                 text: "{{ session('status') }}",
                 icon: "info",
-                buttonsStyling: !1,
-                confirmButtonText: "Oke, mengerti!",
-                customClass: {
-                    confirmButton: "btn btn-primary",
-                },
-                timer: 2000,
-                timerProgressBar: true,
+                buttonsStyling: false,
+                confirmButtonText: "OK, got it!",
                 customClass: {
                     confirmButton: "btn fw-bold btn-primary"
-                }
+                },
+                timer: 2000,
+                timerProgressBar: true
             });
         });
     </script>
@@ -80,16 +68,13 @@
             Swal.fire({
                 html: `{!! implode('<br>', $errors->all()) !!}`,
                 icon: "error",
-                buttonsStyling: !1,
-                confirmButtonText: "Oke, mengerti!",
-                customClass: {
-                    confirmButton: "btn btn-primary",
-                },
-                timer: 2000,
-                timerProgressBar: true,
+                buttonsStyling: false,
+                confirmButtonText: "OK, got it!",
                 customClass: {
                     confirmButton: "btn fw-bold btn-primary"
-                }
+                },
+                timer: 2000,
+                timerProgressBar: true
             });
         });
     </script>
