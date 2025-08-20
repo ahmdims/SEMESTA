@@ -5,6 +5,7 @@ namespace App\Services;
 use Illuminate\Support\Facades\Crypt;
 use App\Models\Attendance;
 use App\Models\Location;
+use App\Models\Shift;
 
 class AttendanceService
 {
@@ -30,13 +31,16 @@ class AttendanceService
             throw new \Exception('You are not within the allowed attendance radius.');
         }
 
+        // Ambil shift terkait
+        $shift = Shift::findOrFail($qrData['shift_id']);
+
         return Attendance::create([
             'user_id' => auth()->id(),
-            'shift_id' => $qrData['shift_id'],
+            'shift_id' => $shift->id,
             'scanned_at' => now(),
             'latitude' => $validatedData['latitude'],
             'longitude' => $validatedData['longitude'],
-            'status' => $this->determineStatus(),
+            'status' => $this->determineStatus($shift),
         ]);
     }
 
@@ -54,11 +58,23 @@ class AttendanceService
 
         $angle = 2 * asin(sqrt(pow(sin($latDelta / 2), 2) +
             cos($latFrom) * cos($latTo) * pow(sin($lonDelta / 2), 2)));
+
         return $angle * $earthRadius;
     }
 
-    private function determineStatus(): string
+    private function determineStatus(Shift $shift): string
     {
-        return 'on_time';
+        $now = now();
+
+        $startTime = $now->copy()->setTimeFromTimeString($shift->start_time);
+        $endTime = $now->copy()->setTimeFromTimeString($shift->end_time);
+
+        if ($now->lessThanOrEqualTo($startTime)) {
+            return 'on_time';
+        } elseif ($now->between($startTime, $endTime)) {
+            return 'late';
+        }
+
+        return 'absent';
     }
 }

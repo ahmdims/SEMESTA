@@ -32,7 +32,6 @@ class AttendanceController extends Controller
 
             return redirect()->route('attendance.scan')
                 ->with('attendance_success', 'Absensi berhasil dicatat!');
-
         } catch (\Exception $e) {
             return redirect()->route('attendance.scan')
                 ->with('attendance_error', $e->getMessage());
