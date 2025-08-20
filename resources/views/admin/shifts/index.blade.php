@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Locations')
+@section('title', 'Shifts')
 
 @section('content')
     <div class="app-main flex-column flex-row-fluid" id="kt_app_main">
@@ -44,7 +44,7 @@
                             </div>
 
                             <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
-                                <a href="{{ route('admin.locations.create') }}" class="btn btn-primary er fs-6 px-8 py-4">
+                                <a href="{{ route('admin.shifts.create') }}" class="btn btn-primary er fs-6 px-8 py-4">
                                     Add @yield('title')
                                 </a>
                             </div>

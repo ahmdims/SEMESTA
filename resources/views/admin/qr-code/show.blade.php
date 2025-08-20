@@ -1,28 +1,33 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            QR Code for: {{ $shift->name }} at {{ $shift->location->name }}
-        </h2>
-    </x-slot>
+@extends('layouts.app')
 
-    <div class="py-12">
-        <div class="max-w-2xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 text-center">
-                    <h3 class="text-lg font-medium mb-4">
-                        Scan this code for shift: {{ $shift->start_time }} - {{ $shift->end_time }}
-                    </h3>
+@section('title', 'QR Code')
 
-                    <div class="flex justify-center p-4 border rounded-lg">
-                        {!! $qrCode !!}
+@section('content')
+    <div class="app-main flex-column flex-row-fluid" id="kt_app_main">
+        <div class="d-flex flex-column flex-column-fluid">
+            <div class="card" id="kt_pricing">
+                <div class="card-body p-lg-17">
+                    <div class="d-flex flex-column align-items-center text-center">
+
+                        <h1 class="fs-1 fw-bold mb-3">
+                            QR Code for {{ $shift->name }}
+                        </h1>
+
+                        <h4 class="fw-semibold text-gray-700 mb-4">
+                            Location: {{ $shift->location->name }}
+                        </h4>
+
+                        <p class="fs-6 text-gray-600 mb-6">
+                            Shift Time: <span class="fw-bold">{{ $shift->start_time }} – {{ $shift->end_time }}</span>
+                        </p>
+
+                        <div class="mb-6">
+                            {!! $qrCode !!}
+                        </div>
+
                     </div>
-
-                    <p class="mt-4 text-sm text-gray-600">
-                        <span class="font-bold">Important:</span> This QR code is unique and will expire one hour after
-                        being generated.
-                    </p>
                 </div>
             </div>
         </div>
     </div>
-</x-app-layout>
+@endsection
