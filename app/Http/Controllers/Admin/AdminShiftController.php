@@ -7,7 +7,7 @@ use App\Models\Shift;
 use App\Models\Location;
 use Illuminate\Http\Request;
 
-class ShiftController extends Controller
+class AdminShiftController extends Controller
 {
     public function index()
     {

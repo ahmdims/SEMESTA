@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Location;
 use Illuminate\Http\Request;
 
-class LocationController extends Controller
+class AdminLocationController extends Controller
 {
     public function index()
     {

@@ -1,13 +1,13 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminAttendanceController;
+use App\Http\Controllers\Admin\AdminLocationController;
+use App\Http\Controllers\Admin\AdminShiftController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AttendanceController;
-use App\Http\Controllers\Admin\LocationController;
-use App\Http\Controllers\Admin\ShiftController;
-use App\Http\Controllers\Admin\QRCodeController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -43,10 +43,12 @@ Route::middleware(['auth', 'role:guard'])->group(function () {
 Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
 
-    Route::resource('locations', LocationController::class);
-    Route::resource('shifts', ShiftController::class);
+    Route::resource('locations', AdminLocationController::class);
+    Route::resource('shifts', AdminShiftController::class);
 
     Route::get('/shifts/{shift}/qrcode', [App\Http\Controllers\Admin\QRCodeController::class, 'show'])->name('shifts.qrcode');
+
+    Route::get('/attendances', [AdminAttendanceController::class, 'index'])->name('attendances.index');
 });
 
 require __DIR__ . '/auth.php';
