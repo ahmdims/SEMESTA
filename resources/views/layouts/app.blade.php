@@ -1,50 +1,60 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="en">
 
-<head>
-    <meta charset="utf-g">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+@include('template.head')
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+@include('template.flasher')
 
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+<body id="kt_app_body" data-kt-app-header-fixed="true" data-kt-app-header-fixed-mobile="true"
+    data-kt-app-sidebar-enabled="true" data-kt-app-sidebar-fixed="true" data-kt-app-sidebar-hoverable="true"
+    data-kt-app-sidebar-push-toolbar="true" data-kt-app-sidebar-push-footer="true" data-kt-app-aside-enabled="false"
+    data-kt-app-aside-fixed="false" data-kt-app-aside-push-toolbar="false" data-kt-app-aside-push-footer="false"
+    class="app-default">
 
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
+    <script>
+        var defaultThemeMode = "light";
+        var themeMode;
 
-<body class="font-sans antialiased">
-    <div class="min-h-screen bg-gray-100">
-        @include('layouts.navigation')
+        if (document.documentElement) {
+            if (document.documentElement.hasAttribute("data-bs-theme-mode")) {
+                themeMode = document.documentElement.getAttribute("data-bs-theme-mode");
+            } else {
+                if (localStorage.getItem("data-bs-theme") !== null) {
+                    themeMode = localStorage.getItem("data-bs-theme");
+                } else {
+                    themeMode = defaultThemeMode;
+                }
+            }
 
-        @if (isset($header))
-            <header class="bg-white shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    {{ $header }}
-                </div>
-            </header>
-        @endif
+            if (themeMode === "system") {
+                themeMode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+            }
 
-        <main>
-            @if (session('success'))
-                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-4">
-                    <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4" role="alert">
-                        <p>{{ session('success') }}</p>
-                    </div>
-                </div>
-            @endif
-            @if (session('error'))
-                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-4">
-                    <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4" role="alert">
-                        <p>{{ session('error') }}</p>
-                    </div>
-                </div>
-            @endif
+            document.documentElement.setAttribute("data-bs-theme", themeMode);
+        }
+    </script>
 
-            {{ $slot }}
-        </main>
+    <div class="d-flex flex-column flex-root app-root" id="kt_app_root">
+        <div class="app-page flex-column flex-column-fluid" id="kt_app_page">
+            @include('template.app.header')
+
+            <div class="app-wrapper flex-column flex-row-fluid" id="kt_app_wrapper">
+
+                @include('template.app.sidebar')
+
+                @yield('content')
+
+                @include('template.footer')
+
+            </div>
+        </div>
     </div>
+
+    <div id="kt_scrolltop" class="scrolltop" data-kt-scrolltop="true">
+        <i class="ki-outline ki-arrow-up"></i>
+    </div>
+
+    @include('template.script')
 </body>
 
 </html>

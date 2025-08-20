@@ -15,10 +15,6 @@ class AttendanceService
     {
         $qrData = json_decode(Crypt::decryptString($validatedData['qr_code']), true);
 
-        if (now()->timestamp > $qrData['expires_at']) {
-            throw new \Exception('QR Code has expired.');
-        }
-
         $location = Location::findOrFail($qrData['location_id']);
         $distance = $this->calculateDistance(
             $location->latitude,
@@ -31,7 +27,6 @@ class AttendanceService
             throw new \Exception('You are not within the allowed attendance radius.');
         }
 
-        // Ambil shift terkait
         $shift = Shift::findOrFail($qrData['shift_id']);
 
         return Attendance::create([

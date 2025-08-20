@@ -12,7 +12,6 @@ class QRCodeService
         $data = [
             'shift_id' => $shiftId,
             'location_id' => $locationId,
-            'expires_at' => now()->addHour()->timestamp,
         ];
 
         $encryptedData = Crypt::encryptString(json_encode($data));
