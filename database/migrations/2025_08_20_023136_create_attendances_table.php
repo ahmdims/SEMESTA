@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->timestamp('scanned_at');
             $table->decimal('latitude', 10, 7);
             $table->decimal('longitude', 10, 7);
-            $table->string('photo_path');
+            $table->string('photo_path')->nullable();
             $table->enum('status', ['on_time', 'late', 'absent'])->default('on_time');
             $table->string('late_reason')->nullable();
             $table->timestamps();

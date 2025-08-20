@@ -3,7 +3,6 @@
 namespace App\Services;
 
 use Illuminate\Support\Facades\Crypt;
-use Illuminate\Http\UploadedFile;
 use App\Models\Attendance;
 use App\Models\Location;
 
@@ -31,24 +30,33 @@ class AttendanceService
             throw new \Exception('You are not within the allowed attendance radius.');
         }
 
-        $photoPath = $validatedData['photo']->store('attendance_photos', 'public');
-
         return Attendance::create([
             'user_id' => auth()->id(),
             'shift_id' => $qrData['shift_id'],
             'scanned_at' => now(),
             'latitude' => $validatedData['latitude'],
             'longitude' => $validatedData['longitude'],
-            'photo_path' => $photoPath,
             'status' => $this->determineStatus(),
         ]);
     }
 
     private function calculateDistance($lat1, $lon1, $lat2, $lon2): float
     {
+        $earthRadius = 6371000;
 
+        $latFrom = deg2rad($lat1);
+        $lonFrom = deg2rad($lon1);
+        $latTo = deg2rad($lat2);
+        $lonTo = deg2rad($lon2);
+
+        $latDelta = $latTo - $latFrom;
+        $lonDelta = $lonTo - $lonFrom;
+
+        $angle = 2 * asin(sqrt(pow(sin($latDelta / 2), 2) +
+            cos($latFrom) * cos($latTo) * pow(sin($lonDelta / 2), 2)));
+        return $angle * $earthRadius;
     }
-    
+
     private function determineStatus(): string
     {
         return 'on_time';

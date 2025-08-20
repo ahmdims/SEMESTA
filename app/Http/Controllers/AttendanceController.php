@@ -25,7 +25,6 @@ class AttendanceController extends Controller
             'qr_code' => 'required|string',
             'latitude' => 'required|numeric',
             'longitude' => 'required|numeric',
-            'photo' => 'required|image',
         ]);
 
         try {

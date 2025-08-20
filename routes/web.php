@@ -35,7 +35,7 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware(['auth', 'role:guard'])->group(function () {
     Route::get('/attendance/scan', [AttendanceController::class, 'create'])->name('attendance.scan');
-    Route::post('/attendance', [AttendanceController::class, 'store'])->name('attendance.store');
+    Route::post('/attendance/store', [AttendanceController::class, 'store'])->name('attendance.store');
 
     Route::get('/attendance/history', [HistoryController::class, 'index'])->name('attendance.history');
 });
