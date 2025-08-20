@@ -23,7 +23,7 @@
                     <div data-kt-menu-trigger="click" class="menu-item here show menu-accordion">
                         <a class="menu-link {{ Request::routeIs('attendance.scan') ? 'active' : '' }}"
                             href="{{ route('attendance.scan') }}">
-                            <span class="menu-icon"><i class="ki-outline ki-file fs-2"></i></span>
+                            <span class="menu-icon"><i class="ki-outline ki-external-drive fs-2"></i></span>
                             <span class="menu-title">Scan Attendance</span>
                         </a>
                     </div>
