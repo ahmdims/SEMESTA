@@ -13,7 +13,7 @@
                             <div class="d-flex justify-content-center align-items-center">
                                 <div class="symbol symbol-55px me-5">
                                     <span class="symbol-label bg-light-primary">
-                                        <i class="ki-solid ki-user text-primary fs-1"></i>
+                                        <i class="ki-solid ki-user-square text-primary fs-1"></i>
                                     </span>
                                 </div>
                                 <div class="card-title align-items-start flex-column">

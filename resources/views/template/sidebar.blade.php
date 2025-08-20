@@ -57,7 +57,7 @@
                     <div data-kt-menu-trigger="click" class="menu-item here show menu-accordion">
                         <a class="menu-link {{ Request::routeIs('admin.shifts.*') ? 'active' : '' }}"
                             href="{{ route('admin.shifts.index') }}">
-                            <span class="menu-icon"><i class="ki-outline ki-file fs-2"></i></span>
+                            <span class="menu-icon"><i class="ki-outline ki-time fs-2"></i></span>
                             <span class="menu-title">Shifts</span>
                         </a>
                     </div>
@@ -65,7 +65,7 @@
                     <div data-kt-menu-trigger="click" class="menu-item here show menu-accordion">
                         <a class="menu-link {{ Request::routeIs('admin.attendances.index') ? 'active' : '' }}"
                             href="{{ route('admin.attendances.index') }}">
-                            <span class="menu-icon"><i class="ki-outline ki-home-2 fs-2"></i></span>
+                            <span class="menu-icon"><i class="ki-outline ki-file fs-2"></i></span>
                             <span class="menu-title">Attendance Recap</span>
                         </a>
                     </div>
@@ -73,7 +73,7 @@
                     <div data-kt-menu-trigger="click" class="menu-item here show menu-accordion">
                         <a class="menu-link {{ Request::routeIs('admin.guards.*') ? 'active' : '' }}"
                             href="{{ route('admin.guards.index') }}">
-                            <span class="menu-icon"><i class="ki-outline ki-home-2 fs-2"></i></span>
+                            <span class="menu-icon"><i class="ki-outline ki-user-square fs-2"></i></span>
                             <span class="menu-title">Guard</span>
                         </a>
                     </div>
@@ -81,7 +81,7 @@
                     <div data-kt-menu-trigger="click" class="menu-item here show menu-accordion">
                         <a class="menu-link {{ Request::routeIs('admin.locations.*') ? 'active' : '' }}"
                             href="{{ route('admin.locations.index') }}">
-                            <span class="menu-icon"><i class="ki-outline ki-home-2 fs-2"></i></span>
+                            <span class="menu-icon"><i class="ki-outline ki-user-square fs-2"></i></span>
                             <span class="menu-title">Admin</span>
                         </a>
                     </div>
