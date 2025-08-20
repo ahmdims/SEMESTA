@@ -3,6 +3,8 @@
 use App\Http\Controllers\Admin\AdminAttendanceController;
 use App\Http\Controllers\Admin\AdminLocationController;
 use App\Http\Controllers\Admin\AdminShiftController;
+use App\Http\Controllers\Admin\AdminUserController;
+use App\Http\Controllers\Admin\QRCodeController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\ProfileController;
@@ -46,9 +48,11 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
     Route::resource('locations', AdminLocationController::class);
     Route::resource('shifts', AdminShiftController::class);
 
-    Route::get('/shifts/{shift}/qrcode', [App\Http\Controllers\Admin\QRCodeController::class, 'show'])->name('shifts.qrcode');
+    Route::get('/shifts/{shift}/qrcode', [QRCodeController::class, 'show'])->name('shifts.qrcode');
 
     Route::get('/attendances', [AdminAttendanceController::class, 'index'])->name('attendances.index');
+
+    Route::get('/guards', [AdminUserController::class, 'index'])->name('guards.index');
 });
 
 require __DIR__ . '/auth.php';

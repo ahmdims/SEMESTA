@@ -49,7 +49,7 @@
                     <div data-kt-menu-trigger="click" class="menu-item here show menu-accordion">
                         <a class="menu-link {{ Request::routeIs('admin.locations.*') ? 'active' : '' }}"
                             href="{{ route('admin.locations.index') }}">
-                            <span class="menu-icon"><i class="ki-outline ki-home-2 fs-2"></i></span>
+                            <span class="menu-icon"><i class="ki-outline ki-map fs-2"></i></span>
                             <span class="menu-title">Locations</span>
                         </a>
                     </div>
@@ -71,8 +71,8 @@
                     </div>
 
                     <div data-kt-menu-trigger="click" class="menu-item here show menu-accordion">
-                        <a class="menu-link {{ Request::routeIs('admin.locations.*') ? 'active' : '' }}"
-                            href="{{ route('admin.locations.index') }}">
+                        <a class="menu-link {{ Request::routeIs('admin.guards.*') ? 'active' : '' }}"
+                            href="{{ route('admin.guards.index') }}">
                             <span class="menu-icon"><i class="ki-outline ki-home-2 fs-2"></i></span>
                             <span class="menu-title">Guard</span>
                         </a>
