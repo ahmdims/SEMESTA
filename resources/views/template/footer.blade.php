@@ -6,7 +6,7 @@
                     document.write(new Date().getFullYear())
                 </script> &copy;
             </span>
-            <a href="{{ route('app.dashboard.index') }}" target="_blank" class="text-gray-800 text-hover-primary">
+            <a href="{{ route('dashboard') }}" target="_blank" class="text-gray-800 text-hover-primary">
                 HadirKu</a>
         </div>
         <ul class="menu menu-gray-600 menu-hover-primary fw-semibold order-1">

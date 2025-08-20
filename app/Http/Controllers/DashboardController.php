@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Attendance;
 
 class DashboardController extends Controller
 {
@@ -14,7 +14,16 @@ class DashboardController extends Controller
         }
 
         if (Auth::user()->role === 'guard') {
-            return view('dashboard');
+
+            $onTime = Attendance::where('status', 'on_time')->count();
+            $late = Attendance::where('status', 'late')->count();
+
+            $summary = [
+                'on_time' => $onTime,
+                'late' => $late,
+            ];
+
+            return view('dashboard', compact('summary'));
         }
 
         return redirect('/');

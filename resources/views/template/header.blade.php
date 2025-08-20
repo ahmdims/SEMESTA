@@ -13,7 +13,7 @@
                 <i class="ki-outline ki-abstract-14 fs-2"></i>
             </div>
 
-            <a href="{{ route('app.dashboard.index') }}" class="app-sidebar-logo">
+            <a href="{{ route('dashboard') }}" class="app-sidebar-logo">
                 <img alt="HadirKu" src="{{ asset('assets/media/logos/default.svg') }}"
                     class="h-25px theme-light-show" />
                 <img alt="HadirKu" src="{{ asset('assets/media/logos/default-dark.svg') }}"

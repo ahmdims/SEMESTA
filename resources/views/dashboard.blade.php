@@ -1,43 +1,58 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+@extends('layouts.app')
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            {{-- Success Message --}}
-            @if(request()->has('success'))
-                <div class="bg-green-500 text-white p-4 rounded mb-4">
-                    {{ request('success') }}
-                </div>
-            @endif
+@section('title', 'Dashboard')
 
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
-                </div>
-            </div>
-        </div>
-    </div>
+@section('content')
+    <div class="app-main flex-column flex-row-fluid " id="kt_app_main">
+        <div class="d-flex flex-column flex-column-fluid">
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    <h3 class="text-2xl font-bold">Welcome, {{ Auth::user()->name }}!</h3>
+            <div id="kt_app_content" class="app-content  flex-column-fluid ">
 
-                    <p class="mt-4">You have successfully logged in.</p>
+                <div id="kt_app_content_container" class="app-container  container-fluid ">
+                    <div class="row g-5 gx-xl-10">
+                        <div class="row g-5 g-xl-10">
 
-                    <div class="mt-6">
-                        <a href="{{ route('attendance.scan') }}"
-                            class="inline-flex items-center px-6 py-3 bg-indigo-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:ring focus:ring-indigo-200 active:bg-indigo-600 disabled:opacity-25 transition">
-                            Go to Scan Attendance Page
-                        </a>
+                            <div class="col-md-6 col-xl-6 mb-xxl-10">
+                                <div class="card overflow-hidden h-md-50 mb-5 mb-xl-10">
+                                    <div class="card-body d-flex justify-content-between flex-column px-0 pb-0">
+                                        <div class="mb-4 px-9">
+                                            <div class="d-flex align-items-center mb-2">
+                                                <span class="fs-2hx fw-bold text-gray-800 me-2 lh-1">
+                                                    {{ $summary['on_time'] ?? 0 }}
+                                                </span>
+                                            </div>
+
+                                            <span class="fs-6 fw-semibold text-gray-500">On Time</span>
+                                        </div>
+
+                                        <div id="kt_card_widget_8_chart" class="min-h-auto" style="height: 125px"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-xl-6 mb-xxl-10">
+                                <div class="card overflow-hidden h-md-50 mb-5 mb-xl-10">
+                                    <div class="card-body d-flex justify-content-between flex-column px-0 pb-0">
+                                        <div class="mb-4 px-9">
+                                            <div class="d-flex align-items-center mb-2">
+                                                <span class="fs-2hx fw-bold text-warning me-2 lh-1">
+                                                    {{ $summary['late'] ?? 0 }}
+                                                </span>
+                                            </div>
+
+                                            <span class="fs-6 fw-semibold text-gray-500">Late</span>
+                                        </div>
+
+                                        <div id="kt_card_widget_8_chart" class="min-h-auto" style="height: 125px"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
-</x-app-layout>
+@endsection
