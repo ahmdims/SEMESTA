@@ -1,6 +1,12 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\Admin\LocationController;
+use App\Http\Controllers\Admin\ShiftController;
+use App\Http\Controllers\Admin\QRCodeController;
+use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,9 +24,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -28,4 +32,18 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+Route::middleware(['auth', 'role:guard'])->group(function () {
+    Route::get('/attendance/scan', [AttendanceController::class, 'create'])->name('attendance.scan');
+    Route::post('/attendance', [AttendanceController::class, 'store'])->name('attendance.store');
+});
+
+Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
+
+    Route::resource('locations', LocationController::class);
+    Route::resource('shifts', ShiftController::class);
+
+    Route::get('/shifts/{shift}/qrcode', [QRCodeController::class, 'show'])->name('shifts.qrcode');
+});
+
+require __DIR__ . '/auth.php';
